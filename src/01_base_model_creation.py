@@ -5,6 +5,7 @@ from tqdm import tqdm
 import logging
 from src.utils.common import read_yaml, create_directories
 import tensorflow as tf
+import io
 
 
 STAGE = "creating base model" ## <<< change stage name 
@@ -52,7 +53,16 @@ def main(config_path):
 
     model.compile(loss="sparse",optimizer=OPTIMIZER,metrics=METRICS)
 
-    model.summary()
+
+    ## log our model summary information in logs
+    def _log_model_summary(model):
+        with io.StringIO()  as stream:
+            model.summary(print_fn=lambda x:stream.write(f"{x}\n"))
+            summary_str = stream.getvalue()
+        return summary_str
+
+    # model.summary()
+    logging.info(f"base model summary: \n{_log_model_summary(model)}")
 
     ## Train the model
     history = model.fit(
