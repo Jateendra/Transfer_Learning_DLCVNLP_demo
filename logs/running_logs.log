@@ -13,3 +13,173 @@ Traceback (most recent call last):
   File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\saving\save.py", line 209, in load_model
     raise IOError(f'No file or directory found at {filepath}')
 OSError: No file or directory found at artifacts\models\base_model.h5
+[2021-11-21 16:16:15,350: INFO: 01.01_base_model_creation_bin]: 
+********************
+[2021-11-21 16:16:15,350: INFO: 01.01_base_model_creation_bin]: >>>>> stage creating binary model from scratch started <<<<<
+[2021-11-21 16:16:15,351: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2021-11-21 16:16:18,290: INFO: 01.01_base_model_creation_bin]: bin_scratch_model model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inputlayer (Flatten)        (None, 784)               0         
+                                                                 
+ hiddenlayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ hiddenlayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ outputlayer (Dense)         (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 265,802
+Trainable params: 265,802
+Non-trainable params: 0
+_________________________________________________________________
+
+[2021-11-21 16:16:18,682: ERROR: 01.01_base_model_creation_bin]: in user code:
+
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 878, in train_function  *
+        return step_function(self, iterator)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 867, in step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 860, in run_step  **
+        outputs = model.train_step(data)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 810, in train_step
+        y, y_pred, sample_weight, regularization_losses=self.losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 184, in __call__
+        self.build(y_pred)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 133, in build
+        self._losses = tf.nest.map_structure(self._get_loss_object, self._losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 273, in _get_loss_object
+        loss = losses_mod.get(loss)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2134, in get
+        return deserialize(identifier)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2093, in deserialize
+        printable_module_name='loss function')
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\generic_utils.py", line 709, in deserialize_keras_object
+        f'Unknown {printable_module_name}: {object_name}. Please ensure '
+
+    ValueError: Unknown loss function: sparse. Please ensure this object is passed to the `custom_objects` argument. See https://www.tensorflow.org/guide/keras/save_and_serialize#registering_the_custom_object for details.
+Traceback (most recent call last):
+  File "src/01.01_base_model_creation_bin.py", line 101, in <module>
+    main(config_path=parsed_args.config)
+  File "src/01.01_base_model_creation_bin.py", line 80, in main
+    verbose=2)
+  File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\tensorflow\python\framework\func_graph.py", line 1129, in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+ValueError: in user code:
+
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 878, in train_function  *
+        return step_function(self, iterator)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 867, in step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 860, in run_step  **
+        outputs = model.train_step(data)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 810, in train_step
+        y, y_pred, sample_weight, regularization_losses=self.losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 184, in __call__
+        self.build(y_pred)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 133, in build
+        self._losses = tf.nest.map_structure(self._get_loss_object, self._losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 273, in _get_loss_object
+        loss = losses_mod.get(loss)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2134, in get
+        return deserialize(identifier)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2093, in deserialize
+        printable_module_name='loss function')
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\generic_utils.py", line 709, in deserialize_keras_object
+        f'Unknown {printable_module_name}: {object_name}. Please ensure '
+
+    ValueError: Unknown loss function: sparse. Please ensure this object is passed to the `custom_objects` argument. See https://www.tensorflow.org/guide/keras/save_and_serialize#registering_the_custom_object for details.
+
+[2021-11-21 16:18:32,320: INFO: 01.01_base_model_creation_bin]: 
+********************
+[2021-11-21 16:18:32,321: INFO: 01.01_base_model_creation_bin]: >>>>> stage creating binary model from scratch started <<<<<
+[2021-11-21 16:18:32,323: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2021-11-21 16:18:34,852: INFO: 01.01_base_model_creation_bin]: bin_scratch_model model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inputlayer (Flatten)        (None, 784)               0         
+                                                                 
+ hiddenlayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ hiddenlayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ outputlayer (Dense)         (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 265,802
+Trainable params: 265,802
+Non-trainable params: 0
+_________________________________________________________________
+
+[2021-11-21 16:18:35,148: ERROR: 01.01_base_model_creation_bin]: in user code:
+
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 878, in train_function  *
+        return step_function(self, iterator)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 867, in step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 860, in run_step  **
+        outputs = model.train_step(data)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 810, in train_step
+        y, y_pred, sample_weight, regularization_losses=self.losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 184, in __call__
+        self.build(y_pred)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 133, in build
+        self._losses = tf.nest.map_structure(self._get_loss_object, self._losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 273, in _get_loss_object
+        loss = losses_mod.get(loss)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2134, in get
+        return deserialize(identifier)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2093, in deserialize
+        printable_module_name='loss function')
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\generic_utils.py", line 709, in deserialize_keras_object
+        f'Unknown {printable_module_name}: {object_name}. Please ensure '
+
+    ValueError: Unknown loss function: sparse. Please ensure this object is passed to the `custom_objects` argument. See https://www.tensorflow.org/guide/keras/save_and_serialize#registering_the_custom_object for details.
+Traceback (most recent call last):
+  File "src/01.01_base_model_creation_bin.py", line 101, in <module>
+    main(config_path=parsed_args.config)
+  File "src/01.01_base_model_creation_bin.py", line 80, in main
+    verbose=2)
+  File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\tensorflow\python\framework\func_graph.py", line 1129, in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+ValueError: in user code:
+
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 878, in train_function  *
+        return step_function(self, iterator)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 867, in step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 860, in run_step  **
+        outputs = model.train_step(data)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\training.py", line 810, in train_step
+        y, y_pred, sample_weight, regularization_losses=self.losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 184, in __call__
+        self.build(y_pred)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 133, in build
+        self._losses = tf.nest.map_structure(self._get_loss_object, self._losses)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\engine\compile_utils.py", line 273, in _get_loss_object
+        loss = losses_mod.get(loss)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2134, in get
+        return deserialize(identifier)
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\losses.py", line 2093, in deserialize
+        printable_module_name='loss function')
+    File "C:\Users\Sasmitabhoi\anaconda3\envs\Transfer-Learning\lib\site-packages\keras\utils\generic_utils.py", line 709, in deserialize_keras_object
+        f'Unknown {printable_module_name}: {object_name}. Please ensure '
+
+    ValueError: Unknown loss function: sparse. Please ensure this object is passed to the `custom_objects` argument. See https://www.tensorflow.org/guide/keras/save_and_serialize#registering_the_custom_object for details.
+
